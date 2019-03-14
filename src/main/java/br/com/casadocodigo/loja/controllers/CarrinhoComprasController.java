@@ -53,6 +53,17 @@ public class CarrinhoComprasController {
 		return new ModelAndView("redirect:/carrinho");
 	}
 	
+	@RequestMapping("/alterar")
+	public ModelAndView alterar(Integer produtoId, TipoPreco tipoPreco) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/carrinho");
+		 Produto produto = new Produto();
+		 produto.setId(produtoId);
+		 CarrinhoItem carrinhoItem = new CarrinhoItem(produto, tipoPreco);
+		carrinho.add(carrinhoItem, 0);
+		
+	    return modelAndView ;
+	}
+	
 }
 
 
