@@ -60,7 +60,11 @@
 	          		   value="${carrinhoCompras.getQuantidade(item) }"></td>
 	          <td class="numeric-cell">${carrinhoCompras.getTotal(item) }</td>
 	          <td class="remove-item">
-	          	<form:form 
+	          	<form action="${s:mvcUrl('CCC#alterar').arg(0, item.produto.id).arg(1, item.tipoPreco).build()}" method="POST">
+								<input type="image" alt="+" title="+" />
+			</form>	
+			  
+			  <form:form 
 	          		action="${s:mvcUrl('CCC#remover').arg(0,item.produto.id).arg(1,item.tipoPreco).build() }" 
 	          			method="post">
 	          		<input type="image" 
