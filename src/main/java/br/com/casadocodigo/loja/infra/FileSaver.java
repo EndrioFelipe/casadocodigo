@@ -19,7 +19,13 @@ public class FileSaver {
 		try {
 			String realPath = request.getServletContext().getRealPath("/"+baseFolder);
 			String path = realPath + "/" + file.getOriginalFilename();
-			file.transferTo(new File(path));
+			String emptyPath = realPath + "/"+ "none";
+			
+			if(file.isEmpty()) {
+				file.transferTo(new File(emptyPath));
+			} else {
+				file.transferTo(new File(path));
+			}
 			
 			return baseFolder + "/" + file.getOriginalFilename();
 		} catch (IllegalStateException | IOException e) {
